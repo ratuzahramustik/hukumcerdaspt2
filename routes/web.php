@@ -123,5 +123,5 @@ Route::middleware('auth')->group(function () {
         // Rute untuk menampilkan pesan di halaman admin, hanya untuk yang sudah login
     Route::get('admin/pesans', [PesanController::class, 'index'])->name('admin.pesans');
 
-    Route::delete('/messages/{id}', [PesanController::class, 'destroy'])->name('messages.destroy');
+    Route::delete('/admin/pesans/{id}', [PesanController::class, 'destroy'])->name('pesans.destroy');
 });

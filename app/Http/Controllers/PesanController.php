@@ -34,18 +34,19 @@ class PesanController extends Controller
 
         // Mengarahkan kembali dengan pesan sukses
         return redirect()->back()->with('success', 'Pesan Anda telah terkirim!');
-        
+
     }
 
     public function destroy($id)
     {
-        // Mencari pesan berdasarkan ID
+        // Cari pesan berdasarkan ID
         $message = Pesan::findOrFail($id);
 
-        // Menghapus pesan
+        // Hapus pesan
         $message->delete();
 
-        // Mengarahkan kembali ke halaman pesan dengan pesan sukses
-        return redirect()->route('messages.index')->with('success', 'Pesan berhasil dihapus.');
+        // Redirect dengan pesan sukses
+        return redirect()->route('admin.pesans')->with('success', 'Pesan berhasil dihapus.');
     }
+
 }

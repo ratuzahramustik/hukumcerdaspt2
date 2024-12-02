@@ -87,11 +87,8 @@ class UserController extends Controller
     }
     public function show($id)
     {
-        // Ambil data user berdasarkan ID
-        $user = User::findOrFail($id);
-
-        // Kirim data user ke tampilan show
-        return view('users.show', compact('user'));
+        $user = User::findOrFail($id);  // Fetch the user by ID
+        return view('users.show', compact('user'));  // Pass the user data to the show view
     }
 
 
@@ -101,6 +98,6 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('admin.pesans')->with('success', 'User deleted successfully.');
+        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
     }
 }
