@@ -1,39 +1,56 @@
 @extends('navbar')
 
 @section('content')
-
 <div class="container">
-    <h1>Surat Permohonan Keterangan Tidak Pernah Dipidana</h1>
+    <h1>Surat Pernyataan Tidak Pernah Dipidana Penjara</h1>
 
-    <div class="content">
-        <p>Surat permohonan yang diajukan untuk mendapatkan surat keterangan tidak pernah dipidana yang dikeluarkan oleh pengadilan negeri.</p>
+    <div class="button-container">
+        <a href="{{ route('solusi') }}" class="btn-download">Back</a>
+        <a href="{{ route('pdf1') }}" class="btn-download">Download</a>
+    </div>
 
-        <div class="button-container">
-            <a href="{{ route('solusi') }}" class="btn-download">Back</a>
-            <a href="{{ route('pdf1') }}" class="btn-download">Download</a>
+    <div class="card">
+        <div class="card-content">
+            <h2>Preview Dokumen</h2>
+            <div class="details">
+                <p><strong>Yang bertanda tangan di bawah ini:</strong></p>
+                <p>Nama Lengkap: .....<br>
+                    Tempat, Tanggal Lahir: ....., ..... <br>
+                    Agama: .....<br>
+                    Pendidikan Terakhir: .....<br>
+                    Alamat: .....<br>
+                    No. Handphone: .....<br>
+                    Email: .....</p>
+
+                <p>Dengan ini saya menyatakan bahwa saya tidak pernah dipidana dengan pidana penjara
+                    berdasarkan putusan pengadilan yang sudah mempunyai kekuatan hukum tetap karena
+                    melakukan tindak pidana dengan pidana penjara 2 (dua) tahun atau lebih.</p>
+                
+                <p>Demikian Surat Pernyataan ini saya buat dengan penuh kesadaran dan tanpa ada paksaan
+                    atau tekanan dari pihak manapun. Apabila pernyataan ini dikemudian hari tidak benar, maka
+                    saya bersedia menerima sanksi. Demikian saya sampaikan.</p>
+
+                <p>Demikian Surat Pernyataan ini dibuat dengan sebenarnya untuk dipergunakan sebagaimana mestinya.</p>
+                <br>
+                <p class="text-right">Tempat, ......2024</p>
+                <p class="text-right">Yang Membuat Pernyataan,</p>
+                <br><br>
+                <p class="text-right">.................................</p>
+            </div>
         </div>
     </div>
-
-    <div class="preview-section">
-        <h2>Preview Dokumen</h2>
-        <p>Surat permohonan yang diajukan kepada pengadilan negeri dibuat pemohon untuk mendapatkan surat keterangan tidak pernah dipidana yang dikeluarkan pengadilan negeri.</p>
-        <a href="{{ route('view1') }}" class="preview-link">Surat Permohonan Keterangan Tidak Pernah Dipidana<br>PREVIEW</a>
-    </div>
 </div>
-
 @endsection
 
 <style>
-    /* Global Styles */
     body {
         font-family: Arial, sans-serif;
-        background-color: #4D0F0F; /* Dark red background */
-        color: #FFFFFF; /* White text */
+        background-color: #4D0F0F;
+        color: #FFFFFF;
         margin: 0;
         padding: 0;
     }
 
-    /* Container Styling */
     .container {
         width: 80%;
         max-width: 1200px;
@@ -41,36 +58,23 @@
         padding: 20px;
     }
 
-    /* Header Styling */
     h1 {
         font-size: 28px;
         font-weight: bold;
         margin-bottom: 20px;
+        margin-top: 60px;
         text-align: center;
-        color: #FFD700; /* Gold color */
+        color: white;
     }
 
-    /* Content Section */
-    .content {
+    .button-container {
         text-align: center;
         margin-bottom: 30px;
     }
 
-    .content p {
-        font-size: 16px;
-        margin-bottom: 20px;
-    }
-
-    /* Button Container */
-    .button-container {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    /* Button Styling */
     .btn-download {
-        background-color: #D3A972; /* Light brown */
-        color: #4D0F0F; /* Dark red */
+        background-color: #D3A972;
+        color: #4D0F0F;
         padding: 12px 25px;
         border-radius: 5px;
         font-size: 16px;
@@ -81,41 +85,49 @@
     }
 
     .btn-download:hover {
-        background-color: #B88A5B; /* Darker brown on hover */
+        background-color: #B88A5B;
     }
 
-    /* Preview Section */
-    .preview-section {
+    .card {
         background-color: #FFFFFF;
         color: #4D0F0F;
         padding: 20px;
         border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    .card-content {
+        text-align: left;
+    }
+
+    .card-content h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
         text-align: center;
     }
 
-    .preview-section h2 {
-        font-size: 20px;
-        color: #4D0F0F;
+    .card-content p,
+    .card-content ul {
+        font-size: 16px;
+        line-height: 1.5;
         margin-bottom: 15px;
     }
 
-    .preview-section p {
-        font-size: 16px;
-        margin-bottom: 20px;
+    .card-content ul {
+        list-style-type: disc;
+        padding-left: 40px;
     }
 
-    .preview-link {
-        color: #B22222; /* Dark red */
-        font-weight: bold;
-        font-size: 16px;
-        text-decoration: none;
+    .details strong {
+        font-size: 18px;
     }
 
-    .preview-link:hover {
-        text-decoration: underline;
+    /* Aligning "Tempat" to the right */
+    .text-right {
+        text-align: right;
     }
 
-    /* Responsive Design */
     @media (max-width: 768px) {
         .container {
             width: 95%;
@@ -125,24 +137,17 @@
             font-size: 24px;
         }
 
-        .content p {
-            font-size: 14px;
-        }
-
         .btn-download {
             font-size: 14px;
             padding: 10px 20px;
         }
 
-        .preview-section h2 {
+        .card-content h2 {
             font-size: 18px;
         }
 
-        .preview-section p {
-            font-size: 14px;
-        }
-
-        .preview-link {
+        .card-content p,
+        .card-content ul {
             font-size: 14px;
         }
     }

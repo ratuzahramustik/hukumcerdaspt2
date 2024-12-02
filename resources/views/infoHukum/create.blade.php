@@ -23,8 +23,7 @@
         <label for="deskripsi">Deskripsi:</label>
         <textarea name="deskripsi" id="deskripsi" required></textarea>
 
-        <button type="submit">Create</button>
-    </form>
+        <button type="submit">Create</button>    </form>
 
     <style>
         body {
@@ -99,4 +98,4 @@
             }
         }
     </style>
-@endsection
+

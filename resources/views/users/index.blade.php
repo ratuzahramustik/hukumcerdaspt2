@@ -5,8 +5,8 @@
 
 <div class="user-list-container">
     @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
+        <div class="alert alert-success" id="success-alert">
+            <span class="alert-icon">✔</span> {{ session('success') }}
         </div>
     @endif
 
@@ -27,13 +27,12 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
+                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-show">Show</a>
                             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-edit">Edit</a>
-                            <form action="{{ route('users.destroy', $user->id) }}" method="POST"
-                                style="display:inline-block;">
+                            <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-delete"
-                                    onclick="return confirm('Are you sure?')">Delete</button>
+                                <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure?')">Delete</button>
                             </form>
                         </td>
                     </tr>
@@ -58,7 +57,6 @@
         background-color: #A03A3B;
         /* Warna untuk baris genap */
     }
-
 
     h1 {
         text-align: center;
@@ -122,8 +120,20 @@
         background-color: #813636;
     }
 
+    .btn-show {
+        background-color: #4CC9FE;
+        color: white;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+    }
+
+    .btn-show:hover {
+        background-color: #608BC1;
+    }
+
     .btn-edit {
-        background-color: #FEEE91;
+        background-color: #FFE700;
         color: black;
         text-decoration: none;
         padding: 8px 16px;
@@ -146,6 +156,23 @@
         background-color: #c82333;
     }
 
+    .alert {
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        background-color: #28a745;
+        color: white;
+        font-size: 16px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .alert-icon {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
     @media (max-width: 768px) {
         .user-list-container {
             width: 90%;
@@ -162,4 +189,5 @@
         }
     }
 </style>
+
 @endsection

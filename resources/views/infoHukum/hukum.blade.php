@@ -1,52 +1,54 @@
 @extends('navbar')
 
 @section('content')
-    <!-- Main Container for Sidebar and Content Area -->
-    <div class="main-container">
-        <!-- Sidebar Category -->
-        <aside class="sidebar">
-            <h2>Kategori</h2>
-            <hr>
-            <a href="{{ route('katpidana') }}">Pidana</a>
-            <hr>
-            <a href="{{ route('katperdata') }}">Perdata</a>
-            <hr>
-            <a href="{{ route('katpajak') }}">Pajak & Keuangan</a>
-            <hr>
-            <a href="{{ route('katkerja') }}">Ketenagakerjaan</a>
-            <hr>
-            <a href="{{ route('katham') }}">Hak Asasi Manusia</a>
-        </aside>
+<!-- Main Container for Sidebar and Content Area -->
+<div class="main-container">
+    <!-- Sidebar Category -->
+    <aside class="sidebar">
+        <h2>Kategori</h2>
+        <hr>
+        <a href="{{ route('katpidana') }}">Pidana</a>
+        <hr>
+        <a href="{{ route('katperdata') }}">Perdata</a>
+        <hr>
+        <a href="{{ route('katpajak') }}">Pajak & Keuangan</a>
+        <hr>
+        <a href="{{ route('katkerja') }}">Ketenagakerjaan</a>
+        <hr>
+        <a href="{{ route('katham') }}">Hak Asasi Manusia</a>
+    </aside>
 
-        <!-- Content Area -->
-        <section class="content-area">
-            <!-- Add Category Button on the Right -->
-            <div class="header-section">
-                <h2>Hukum</h2>
+    <!-- Content Area -->
+    <section class="content-area">
+        <!-- Add Category Button on the Right -->
+        <div class="header-section">
+            <h2>Hukum</h2>
+            @if (auth()->check() && auth()->user()->role === 'admin')
+                <a href="{{ route('kategori.create') }}" class="btn-add-category">+ Tambah Kategori</a>
+            @endif
+        </div>
+
+        <!-- Posts -->
+        @foreach ($hukum as $post)
+            <div class="post">
+                <a href="{{ route('deskpidana', ['id' => $post->id]) }}" class="post-title">{{ $post->judul }}</a>
+                <div class="post-meta">{{ $post->created_at->format('d.m.Y') }} • {{ $post->kategori }}</div>
                 @if (auth()->check() && auth()->user()->role === 'admin')
-                    <a href="{{ route('kategori.create') }}" class="btn-add-category">+ Tambah Kategori</a>
-                @endif
-            </div>
+                    <div class="button-group">
+                        <form id="delete-form-{{ $post->id }}"
+                            action="{{ route('kategori.delete', ['kategori' => $post->id]) }}" method="POST"
+                            style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" class="btn danger" onclick="confirmDelete({{ $post->id }})">Hapus</button>
+                        </form>
 
-            <!-- Posts -->
-            @foreach ($hukum as $post)
-                <div class="post">
-                    <a href="{{ route('deskpidana', ['id' => $post->id]) }}" class="post-title">{{ $post->judul }}</a>
-                    <div class="post-meta">{{ $post->created_at->format('d.m.Y') }} • {{ $post->kategori }}</div>
-                    @if (auth()->check() && auth()->user()->role === 'admin')
-                        <div class="button-group">
-                            <form action="{{ route('kategori.delete', ['kategori' => $post->id]) }}" method="POST"
-                                style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn danger">Hapus</button>
-                            </form>
-                        </div>
-                    @endif
-                </div>
-            @endforeach
-        </section>
-    </div>
+                    </div>
+                @endif
+            </div>
+        @endforeach
+    </section>
+</div>
 @endsection
 
 <style>
@@ -223,5 +225,24 @@
             width: 100%;
             text-align: center;
         }
+        
     }
 </style>
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Submit the form
+                document.getElementById(`delete-form-${id}`).submit();
+            }
+        });
+    }
+</script>

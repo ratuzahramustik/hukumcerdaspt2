@@ -114,6 +114,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::resource('users', UserController::class);
+    Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 
 
     // Rute untuk menyimpan pesan (dari form pengguna)
@@ -122,5 +123,5 @@ Route::middleware('auth')->group(function () {
         // Rute untuk menampilkan pesan di halaman admin, hanya untuk yang sudah login
     Route::get('admin/pesans', [PesanController::class, 'index'])->name('admin.pesans');
 
-    
+    Route::delete('/messages/{id}', [PesanController::class, 'destroy'])->name('messages.destroy');
 });

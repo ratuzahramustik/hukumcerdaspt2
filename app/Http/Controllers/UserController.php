@@ -48,7 +48,7 @@ class UserController extends Controller
         ]);
 
 
-        return redirect()->route('users.index')->with('success', 'User created successfully.');
+        return redirect()->route('users.index')->with('success', 'User has been successfully created!.');
     }
 
     // Menampilkan form untuk mengedit pengguna
@@ -85,6 +85,14 @@ class UserController extends Controller
 
         return redirect()->route('users.index')->with('success', 'User updated successfully.');
     }
+    public function show($id)
+    {
+        // Ambil data user berdasarkan ID
+        $user = User::findOrFail($id);
+
+        // Kirim data user ke tampilan show
+        return view('users.show', compact('user'));
+    }
 
 
     // Menghapus pengguna
@@ -93,6 +101,6 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+        return redirect()->route('admin.pesans')->with('success', 'User deleted successfully.');
     }
 }

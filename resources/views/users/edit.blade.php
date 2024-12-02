@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User Form</title>
     <style>
+        /* Gaya CSS sama seperti sebelumnya */
         body {
             font-family: Arial, sans-serif;
             background-color: #5b1414;
@@ -78,17 +80,18 @@
         input[type="submit"]:hover {
             background-color: #bfa17b;
         }
-
     </style>
+    <!-- Tambahkan pustaka SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
 <div class="card-container">
     <h1>Edit User</h1>
-    <form action="{{ route('users.update', $user->id) }}" method="POST">
-    @csrf
-    @method('PUT')
-    <div class="form-group">
+    <form id="editUserForm" action="{{ route('users.update', $user->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <div class="form-group">
             <div class="left">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" value="">
@@ -152,11 +155,41 @@
             </div>
         </div>
 
+        <!-- Form input lainnya tetap sama -->
+
         <input type="submit" value="Update">
     </form>
-       
-
 </div>
+
+<script>
+    // Tangkap form
+    const form = document.getElementById('editUserForm');
+
+    // Tambahkan event listener untuk submit
+    form.addEventListener('submit', function(event) {
+        // Hentikan pengiriman form
+        event.preventDefault();
+
+        // Tampilkan alert konfirmasi
+        Swal.fire({
+            title: "Do you want to save the changes?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Save",
+            denyButtonText: `Don't save`
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Jika pengguna menekan "Save", kirim form
+                Swal.fire("Saved!", "", "success").then(() => {
+                    form.submit();
+                });
+            } else if (result.isDenied) {
+                // Jika pengguna menekan "Don't save", tampilkan info
+                Swal.fire("Changes are not saved", "", "info");
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

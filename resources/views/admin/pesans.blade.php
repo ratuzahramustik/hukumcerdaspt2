@@ -21,6 +21,13 @@
                         <td>{{ $message->email }}</td>
                         <td>{{ $message->message }}</td>
                         <td>{{ $message->created_at->format('d-m-Y H:i') }}</td>
+                        <td>
+                            <form action="{{ route('messages.destroy', $message->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pesan ini?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Hapus</button>
+                            </form>
+                        </td>
                     </tr>
                 @empty
                     <tr>
@@ -50,7 +57,6 @@
     .container {
         max-width: 900px;
         margin: 150px auto;
-        /* Menambahkan margin-top 100px untuk menurunkan posisi card */
         padding: 40px 20px;
         background-color: #a34949;
         border-radius: 10px;
@@ -107,6 +113,25 @@
         .table th,
         .table td {
             padding: 10px;
+        }
+
+        .table th, 
+        .table td {
+            font-size: 14px;
+        }
+
+        /* Responsif pada kolom pesan agar dapat menyesuaikan lebar */
+        .table td:nth-child(3) {
+            word-wrap: break-word;
+            white-space: normal;
+            max-width: 200px; /* Batas lebar pesan */
+        }
+
+        /* Pastikan kolom tanggal tetap sejajar dengan pesan */
+        .table td:nth-child(4) {
+            word-wrap: break-word;
+            white-space: normal;
+            max-width: 150px; /* Batas lebar tanggal */
         }
     }
 </style>

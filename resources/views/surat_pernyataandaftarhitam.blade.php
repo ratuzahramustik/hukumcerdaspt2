@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surat Pernyataan</title>
+    <title>Surat Pernyataan Semua Pengurus Dan Badan Usaha Tidak Masuk Dalam Daftar Hitam</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,11 +21,14 @@
         .content {
             margin: 20px 0;
         }
+       
     </style>
 </head>
 <body>
-
-    <h2 class="text-center">SURAT PERNYATAAN</h2>
+<!-- <div class="back-button">
+        <button onclick="window.history.back()">Back</button>
+    </div> -->
+    <h2 class="text-center">Surat Pernyataan Semua Pengurus Dan Badan Usaha Tidak Masuk Dalam Daftar Hitam</h2>
 
     <p class="text-justify">
         Yang bertanda tangan di bawah ini:
@@ -41,7 +44,14 @@
             <td>: .....</td>
         </tr>
         <tr>
-            <td>Perusahaan</td>
+            <td>Dalam hal ini bertindak untuk atas nama:</td>
+        </tr>
+        <tr>
+            <td>Nama Perusahaan</td>
+            <td>: .....</td>
+        </tr>
+        <tr>
+            <td>N.P.W.P</td>
             <td>: .....</td>
         </tr>
         <tr>
@@ -55,10 +65,12 @@
     </p>
 
     <ol>
-        <li>Tidak termasuk dalam daftar hitam (blacklist) pemerintah atau lembaga lainnya.</li>
+        <li>Dengan ini kami menyatakan dengan sebenarnya, bahwa semua pengurus dan badan usaha tidak
+        masuk dalam Daftar Hitam, apabila dikemudian hari ternyata data / dokumen tersebut tidak benar. maka kami sanggup dikenakan sankai sesuai dengan peraturan perundang-undangan yang berlaku.</li>
         <li>Tidak dalam pengawasan pengadilan.</li>
         <li>Kegiatan usaha perusahaan tidak sedang dalam kondisi pailit.</li>
         <li>Tidak sedang menjalani sanksi hukum baik secara pidana maupun perdata.</li>
+        <li>Demikian Surat Pernyataan ini dibuat dengan sebenarnya untuk dipergunakan sebagaimana mestinya.</li>
     </ol>
 
     <p class="text-justify content">
@@ -66,10 +78,11 @@
     </p>
 
     <div class="signature">
-        <p>....., .....</p>
-        <p>.....</p>
-        <p>.....</p>
-    </div>
+            <p>Tempat, ......2024</p>
+            <p>Yang Membuat Pernyataan,</p>
+            <br><br>
+            <p>.......</p>
+        </div>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surat Permohonan Keterangan Tidak Pernah Dipidana</title>
+    <title>Surat Permohonan Keterangan Tidak Pernah Dipidana Penjara</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -26,23 +26,19 @@
             text-align: right;
             margin-top: 50px;
         }
-        .back-button {
-            margin-top: 20px;
-            text-align: left;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>Surat Pernyataan</h1>
-            <h2>Tidak Pernah Dipidana</h2>
+            <h1>Tidak Pernah Dipidana Penjara</h1>
         </div>
         <div class="content">
             <p>Yang bertanda tangan di bawah ini:</p>
             <table>
                 <tr>
-                    <td>Nama</td>
+                    <td>Nama Lengkap</td>
                     <td>: .....</td>
                 </tr>
                 <tr>
@@ -50,19 +46,31 @@
                     <td>: ....., .....</td>
                 </tr>
                 <tr>
+                    <td>Agama</td>
+                    <td>: .....</td>
+                </tr>
+                <tr>
+                    <td>Pendidikan Terakhir</td>
+                    <td>: .....</td>
+                </tr>
+                <tr>
                     <td>Alamat</td>
                     <td>: .....</td>
                 </tr>
                 <tr>
-                    <td>No. KTP</td>
+                    <td>No. Handphone</td>
+                    <td>: .....</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
                     <td>: .....</td>
                 </tr>
             </table>
-            <p>Dengan ini menyatakan bahwa saya tidak pernah dijatuhi pidana berdasarkan putusan pengadilan yang telah berkekuatan hukum tetap karena melakukan tindakan pidana yang diancam dengan pidana penjara 2 (dua) tahun atau lebih.</p>
-            <p>Demikian surat pernyataan ini saya buat dengan sesungguhnya, dan saya bersedia menerima konsekuensi hukum yang berlaku apabila pernyataan ini di kemudian hari terbukti tidak benar.</p>
+            <p>Dengan ini saya menyatakan bahwa saya tidak pernah dipidana dengan pidana penjara berdasarkan putusan pengadilan yang sudah mempunyai kekuatan hukum tetap karena melakukan tindak pidana dengan pidana penjara 2 (dua) tahun atau lebih.</p>
+            <p>Demikian Surat Pernyataan ini saya buat dengan penuh kesadaran dan tanpa ada paksaan atau tekanan dari pihak manapun. Apabila pernyataan ini dikemudian hari tidak benar, maka saya bersedia menerima sanksi. Demikian saya sampaikan.</p>
         </div>
         <div class="signature">
-            <p>Bogor, ......2024</p>
+            <p>Tempat, ......2024</p>
             <p>Yang Membuat Pernyataan,</p>
             <br><br>
             <p>.......</p>

@@ -13,8 +13,8 @@
         </div>
 
         <div class="document-card">
-            <h3>Surat Permohonan Keterangan Tidak Pernah Dipidana</h3>
-            <p>Surat permohonan yang diajukan untuk mendapatkan surat keterangan tidak pernah dipidana yang dikeluarkan oleh pengadilan negeri.</p>
+            <h3>Surat Pernyataan Semua Pengurus Dan Badan Usaha Tidak Masuk Dalam Daftar Hitam</h3>
+            <p>Surat yang menyatakan bahwa semua pengurus dan badan usaha tidak masuk dalam Daftar Hitam yang dikeluarkan oleh pengadilan negeri.</p>
             <button><a href="{{ route('dokumen2') }}">Lihat template</a></button>
         </div>
     </div>

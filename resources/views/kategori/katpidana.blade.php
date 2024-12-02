@@ -1,45 +1,45 @@
 @extends('navbar')
 
 @section('content')
-    <!-- Back Button at the Top -->
-    <div class="top-bar">
-        <button class="btn-back">
-            <a href="{{ route('hukum') }}">Kembali ke Halaman Awal</a>
-        </button>
-    </div>
+<!-- Back Button at the Top -->
+<div class="top-bar">
+    <button class="btn-back">
+        <a href="{{ route('hukum') }}">Kembali ke Halaman Awal</a>
+    </button>
+</div>
 
-    <!-- Main Container for Sidebar and Content Area -->
-    <div class="main-container">
-        <!-- Sidebar Category -->
-        <aside class="sidebar">
-            <h2>Kategori</h2>
-            <hr>
-            <a href="{{ route('katpidana') }}">Pidana</a>
-            <hr>
-            <a href="{{ route('katperdata') }}">Perdata</a>
-            <hr>
-            <a href="{{ route('katpajak') }}">Pajak & Keuangan</a>
-            <hr>
-            <a href="{{ route('katkerja') }}">Ketenagakerjaan</a>
-            <hr>
-            <a href="{{ route('katham') }}">Hak Asasi Manusia</a>
-        </aside>
+<!-- Main Container for Sidebar and Content Area -->
+<div class="main-container">
+    <!-- Sidebar Category -->
+    <aside class="sidebar">
+        <h2>Kategori</h2>
+        <hr>
+        <a href="{{ route('katpidana') }}">Pidana</a>
+        <hr>
+        <a href="{{ route('katperdata') }}">Perdata</a>
+        <hr>
+        <a href="{{ route('katpajak') }}">Pajak & Keuangan</a>
+        <hr>
+        <a href="{{ route('katkerja') }}">Ketenagakerjaan</a>
+        <hr>
+        <a href="{{ route('katham') }}">Hak Asasi Manusia</a>
+    </aside>
 
-        <!-- Content Area -->
-        <section class="content-area">
-            <div class="header-section">
-                <h2>Pidana</h2>
+    <!-- Content Area -->
+    <section class="content-area">
+        <div class="header-section">
+            <h2>Pidana</h2>
+        </div>
+
+        <!-- Posts -->
+        @foreach ($pidanaPosts as $post)
+            <div class="post">
+                <a href="{{ route('deskpidana', ['id' => $post->id]) }}" class="post-title">{{ $post->judul }}</a>
+                <div class="post-meta">{{ $post->created_at->format('d.m.Y') }} • {{ $post->kategori }}</div>
             </div>
-
-            <!-- Posts -->
-            @foreach ($pidanaPosts as $post)
-                <div class="post">
-                    <a href="{{ route('deskpidana', ['id' => $post->id]) }}" class="post-title">{{ $post->judul }}</a>
-                    <div class="post-meta">{{ $post->created_at->format('d.m.Y') }} • {{ $post->kategori }}</div>
-                </div>
-            @endforeach
-        </section>
-    </div>
+        @endforeach
+    </section>
+</div>
 @endsection
 
 <style>
@@ -105,10 +105,24 @@
         background-color: #8f4a4a;
         color: white;
     }
+
     .container {
-    display: flex; /* Menjadikan container sebagai flexbox */
-    justify-content: flex-start; /* Menyusun item dari kiri */
-}
+        display: flex;
+        /* Menjadikan container sebagai flexbox */
+        justify-content: flex-start;
+        /* Menyusun item dari kiri */
+    }
+
+    .top-bar {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        /* Mengatur posisi konten di sebelah kiri */
+        padding: 10px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
 
     .btn-back {
         background-color: #D6C3A5;
