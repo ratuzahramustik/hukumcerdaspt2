@@ -3,12 +3,7 @@
 @section('content')
 <h1 class="text-center">User Details</h1>
 
-<div class="user-details-container">
-    @if(session('success'))
-        <div class="alert alert-success" id="success-alert">
-            <span class="alert-icon">✔</span> {{ session('success') }}
-        </div>
-    @endif
+<div class="user-details-container">add
 
     <div class="user-details">
         <div class="user-item">

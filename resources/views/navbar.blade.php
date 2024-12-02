@@ -160,7 +160,7 @@
                 <a href="{{ route('solusi') }}">Solusi</a>
                 <!-- Dropdown Menu for Solusi -->
                 <div class="dropdown">
-                    <a href="{{route('konsultasi')}}">Konsultasi</a>
+                    <a href="{{ route('konsultasi') }}">Konsultasi</a>
                 </div>
             </li>
             @if (Auth::user() && Auth::user()->role === 'admin')
@@ -170,14 +170,24 @@
             @endif
             <li><a href="{{ route('pro') }}">Pro Bono</a></li>
             @if (Auth::user() && Auth::user()->role === 'admin')
-                <li><a href="{{route('users.index')}}">User</a></li>
+                <li><a href="{{ route('users.index') }}">User</a></li>
             @endif
             <li><a href="{{ route('profile.show') }}"><i class="fas fa-user user-icon"></i></a></li> <!-- User icon -->
         </ul>
     </div>
 
     @yield('content')
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: 'Berhasil!',
+                text: "{{ session('success') }}",
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    @endif
     <script>
         // Toggle navbar on mobile
         function toggleNavbar() {

@@ -123,12 +123,12 @@
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Email" required>
+                    <input type="email" id="email" name="email" placeholder="Email" required autocomplete="new-email">
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <input type="password" id="password" name="password" placeholder="Password" required autocomplete="new-password">
                 </div>
 
                 <div class="form-group">
@@ -154,6 +154,7 @@
                 <div class="form-group">
                     <label for="jenis_kelamin">Gender</label>
                     <select id="jenis_kelamin" name="jenis_kelamin" required>
+                        <option value="">Pilih JK Anda</option>
                         <option value="Perempuan">Perempuan</option>
                         <option value="Laki laki">Laki laki</option>
                     </select>
@@ -162,6 +163,7 @@
                 <div class="form-group">
                     <label for="agama">Religion</label>
                     <select id="agama" name="agama" required>
+                        <option value="">Pilih Agama Anda</option>
                         <option value="Islam">Islam</option>
                         <option value="Kristen">Kristen</option>
                         <option value="Katolik">Katolik</option>

@@ -199,18 +199,7 @@
 
                 <button type="submit">Create</button>
             </form>
-            <script>
-    @if(session('success'))
-        Swal.fire({
-            title: "Success!",
-            text: "{{ session('success') }}",
-            icon: "success",
-            confirmButtonColor: "#3085d6",
-            confirmButtonText: "OK"
-        });
-    @endif
-</script>
-           
+
         </div>
     </div>
 

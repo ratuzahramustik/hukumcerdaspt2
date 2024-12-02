@@ -138,8 +138,8 @@
             <p>Solusi Hukum dengan Mudah dan Cepat</p>
             <div class="button-container">
                 @if (!Auth::check())
-                    <button class="btn"><a href="{{ route('register') }}">Register</a></button>
-                    <button class="btn"><a href="{{ route('login') }}">Login</a></button>
+                    <a href="{{ route('register') }}"> <button class="btn">Register</button></a>
+                    <a href="{{ route('login') }}"> <button class="btn">Login</button></a>
                 @else
                     <button class="btn"><a href="{{ route('dashboard') }}">Dashboard</a></button>
                 @endif

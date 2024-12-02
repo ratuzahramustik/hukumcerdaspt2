@@ -32,7 +32,6 @@ class UserController extends Controller
             'tanggal_lahir' => 'nullable|date',
             'jenis_kelamin' => 'required|in:Perempuan,Laki laki',
             'agama' => 'required|in:Islam,Kristen,Katolik,Hindu,Buddha,Konghucu',
-            'role' => 'required|in:admin,user',
         ]);
 
         User::create([
@@ -44,14 +43,13 @@ class UserController extends Controller
             'tanggal_lahir' => $request->tanggal_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
             'agama' => $request->agama,
-            'role' => $request->role,
+            'role' => 'user',
         ]);
 
 
         return redirect()->route('users.index')->with('success', 'User has been successfully created!.');
     }
 
-    // Menampilkan form untuk mengedit pengguna
     public function edit($id)
     {
         $user = User::findOrFail($id);
@@ -70,7 +68,6 @@ class UserController extends Controller
             'tanggal_lahir' => 'nullable|date',
             'jenis_kelamin' => 'required|in:Perempuan,Laki laki',
             'agama' => 'required|in:Islam,Kristen,Katolik,Hindu,Buddha,Konghucu',
-            'role' => 'required|in:admin,user',
         ]);
 
         $user = User::findOrFail($id);
@@ -85,12 +82,10 @@ class UserController extends Controller
 
         return redirect()->route('users.index')->with('success', 'User updated successfully.');
     }
+    
     public function show($id)
     {
-        // Ambil data user berdasarkan ID
         $user = User::findOrFail($id);
-
-        // Kirim data user ke tampilan show
         return view('users.show', compact('user'));
     }
 

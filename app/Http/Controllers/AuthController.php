@@ -17,32 +17,32 @@ class AuthController extends Controller
     }
 
     public function register(Request $request)
-{
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:users',
-        'password' => ['required', 'confirmed'],
-        'telephone' => 'required|string|max:15',
-        'tempat_lahir' => 'required|string|max:100',
-        'tanggal_lahir' => 'required|date',
-        'jenis_kelamin' => 'required|in:Perempuan,Laki laki',
-        'agama' => 'required|in:Islam,Kristen,Katolik,Hindu,Buddha,Konghucu',
-    ]);
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => ['required', 'confirmed'],
+            'telephone' => 'required|string|max:15',
+            'tempat_lahir' => 'required|string|max:100',
+            'tanggal_lahir' => 'required|date',
+            'jenis_kelamin' => 'required|in:Perempuan,Laki laki',
+            'agama' => 'required|in:Islam,Kristen,Katolik,Hindu,Buddha,Konghucu',
+        ]);
 
-    User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => Hash::make($request->password),
-        'telephone' => $request->telephone,
-        'tempat_lahir' => $request->tempat_lahir,
-        'tanggal_lahir' => $request->tanggal_lahir, // Make sure this is included
-        'jenis_kelamin' => $request->jenis_kelamin,
-        'agama' => $request->agama,
-        'role' => 'user',
-    ]);
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'telephone' => $request->telephone,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir, // Make sure this is included
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'agama' => $request->agama,
+            'role' => 'user',
+        ]);
 
-    return redirect()->route('login')->with('success', 'Registration successful. Please login.');
-}
+        return redirect()->route('login')->with('success', 'Registration successful. Please login.');
+    }
 
 
     public function showLoginForm()
@@ -81,37 +81,35 @@ class AuthController extends Controller
     }
 
 
-public function generatePdf()
-{
-    $data = [
-        'nama' => '.....',
-        'tempat_lahir' => '.....',
-        'tanggal_lahir' => '.....',
-        'alamat' => '.....',
-        'no_ktp' => '.....',
-        'kota' => '.....',
-        'tanggal' => now()->format('d F Y')
-    ];
+    public function generatePdf()
+    {
+        $data = [
+            'nama' => '.....',
+            'tempat_lahir' => '.....',
+            'tanggal_lahir' => '.....',
+            'alamat' => '.....',
+            'no_ktp' => '.....',
+            'kota' => '.....',
+            'tanggal' => now()->format('d F Y')
+        ];
 
-    $pdf = PDF::loadView('suratPernyataan', $data);
-    return $pdf->download('Surat_Keterangan_Tidak_Pernah_Dipidana.pdf');
-}
-
-
-public function exportPdf()
-{
-    $data = [
-        'nama' => '.....',
-        'jabatan' => '.....',
-        'perusahaan' => '.....',
-        'alamat' => '.....',
-        'tempat' => '.....',
-        'tanggal' => '.....'
-    ];
-
-    $pdf = Pdf::loadView('surat_pernyataandaftarhitam', $data);
-    return $pdf->download('Surat_Pernyataan_Daftar_Hitam.pdf');
-}
+        $pdf = PDF::loadView('suratPernyataan', $data);
+        return $pdf->download('Surat_Keterangan_Tidak_Pernah_Dipidana.pdf');
+    }
 
 
+    public function exportPdf()
+    {
+        $data = [
+            'nama' => '.....',
+            'jabatan' => '.....',
+            'perusahaan' => '.....',
+            'alamat' => '.....',
+            'tempat' => '.....',
+            'tanggal' => '.....'
+        ];
+
+        $pdf = Pdf::loadView('surat_pernyataandaftarhitam', $data);
+        return $pdf->download('Surat_Pernyataan_Daftar_Hitam.pdf');
+    }
 }
